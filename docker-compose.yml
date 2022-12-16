@@ -1,8 +1,8 @@
 version: "3"
 services:
-  api:
+  web:
     build:
-        context: ./api
+        context: ./web
     #command: /bin/bash -c "composer install && npm install && chmod 777 -R ./storage  && php artisan octane:start --watch --server=swoole --host=0.0.0.0 --port=8000"
     command: /bin/bash -c "php artisan serve --host=0.0.0.0 --port=80"
     ports:
@@ -41,7 +41,7 @@ services:
       MIX_PUSHER_APP_KEY: "${PUSHER_APP_KEY}"
       MIX_PUSHER_APP_CLUSTER: "${PUSHER_APP_CLUSTER}"
     volumes:
-      - ./api:/var/www/html
+      - ./web:/var/www/html
     networks:
       - default
 
