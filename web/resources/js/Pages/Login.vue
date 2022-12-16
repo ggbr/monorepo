@@ -17,15 +17,15 @@
                                 </div>
                                 <form class="user">
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user"
+                                        <input v-model="email" type="email" class="form-control form-control-user"
                                             id="exampleInputEmail" aria-describedby="emailHelp"
                                             placeholder="Enter Email Address...">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user"
+                                        <input v-model="password" type="password" class="form-control form-control-user"
                                             id="exampleInputPassword" placeholder="Password">
                                     </div>
-                                    <button class="btn btn-primary">Login</button>
+                                    <button @click="login" type="button" class="btn btn-primary">Login</button>
                                 </form>
                             </div>
                         </div>
@@ -44,8 +44,19 @@ export default {
     props: ["title"],
     data() {
         return {
+            email: '',
+            password: '',
             count: 0
         };
+    },
+    methods: {
+        login: function(){
+            let form = {
+                email: this.email,
+                password: this.password
+            }
+            this.$inertia.post('/login', form)
+        }
     },
     components: { BtnSucess }
 }

@@ -4,7 +4,7 @@ services:
     build:
         context: ./web
     #command: /bin/bash -c "composer install && npm install && chmod 777 -R ./storage  && php artisan octane:start --watch --server=swoole --host=0.0.0.0 --port=8000"
-    command: /bin/bash -c "php artisan serve --host=0.0.0.0 --port=80"
+    command: /bin/bash -c "composer install && php artisan serve --host=0.0.0.0 --port=80"
     ports:
        - "80:80"
     environment:

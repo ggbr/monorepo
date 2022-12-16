@@ -15,4 +15,6 @@ use App\Http\Controllers\WebController;
 
 Route::get('/', [WebController::class, 'home']);
 Route::get('/login', [WebController::class, 'login']);
-Route::get('/dash', [WebController::class, 'dash']);
+Route::post('/login', [WebController::class, 'logar']);
+
+Route::get('/dash', [WebController::class, 'dash'])->middleware('auth')->name('dash');
